@@ -1,0 +1,21 @@
+Eevee
+	55
+	55
+	50
+	55
+Glaceon
+	65
+	60
+	110
+	65
+	Specials:
+		Attack: 130
+		Defense: 95
+Vaporeon
+	130
+	65
+	60
+	65
+	Specials:
+		Attack: 110
+		Defense: 95
