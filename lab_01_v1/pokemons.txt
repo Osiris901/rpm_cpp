@@ -1,21 +1,31 @@
+Pokemons:
+
 Eevee
-	55
-	55
-	50
-	55
-Glaceon
-	65
-	60
-	110
-	65
+	Health: 55
+	Attack: 55
+	Defense: 50
+	Speed: 55
+Rare Glaceon
+	Health: 65
+	Attack: 60
+	Defense: 110
+	Speed: 65
 	Specials:
 		Attack: 130
 		Defense: 95
-Vaporeon
-	130
-	65
-	60
-	65
+Epic Vaporeon
+	Health: 130
+	Attack: 65
+	Defense: 60
+	Speed: 65
 	Specials:
 		Attack: 110
 		Defense: 95
+Legendary Sylveon
+	Health: 95
+	Attack: 65
+	Defense: 65
+	Speed: 60
+	Specials:
+		Attack: 110
+		Defense: 130

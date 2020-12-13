@@ -23,7 +23,7 @@ struct Pokemon
 
 	virtual void print(ostream& stream) const
 	{
-		stream << name_ << "\n\t" << health_ << "\n\t" <<attack_ << "\n\t" << defense_ << "\n\t" << speed_ << endl;
+		stream << name_ << "\n\tHealth: " << health_ << "\n\tAttack: " <<attack_ << "\n\tDefense: " << defense_ << "\n\tSpeed: " << speed_ << endl;
 	}
 
 private:
@@ -51,10 +51,65 @@ struct RarePokemon : Pokemon
 
 	void print(ostream& stream) const override
 	{
-		 Pokemon::print(stream);
-		 stream << "\tSpecials:\n\t\tAttack: " << special_attack_ << "\n\t\tDefense: " << special_defense_ << endl;
+		stream << "Rare ";
+		Pokemon::print(stream);
+		stream << "\tSpecials:\n\t\tAttack: " << special_attack_ << "\n\t\tDefense: " << special_defense_ << endl;
 	}
 	
+private:
+	unsigned special_attack_;
+	unsigned special_defense_;
+};
+
+struct EpicPokemon : Pokemon
+{
+	EpicPokemon(const string& name, double const health, unsigned const attack, unsigned const defense, unsigned const speed, unsigned special_attack,
+		unsigned special_defense)
+		: Pokemon(name, health, attack, defense, speed),
+		special_attack_(special_attack),
+		special_defense_(special_defense)
+	{}
+
+	void set_special_attack(unsigned special_attack) { special_attack_ = special_attack; }
+	void set_special_defense(unsigned special_defense) { special_defense_ = special_defense; }
+
+	unsigned get_special_attack() const { return special_attack_; }
+	unsigned get_special_defense() const { return special_defense_; }
+
+	void print(ostream& stream) const override
+	{
+		stream << "Epic ";
+		Pokemon::print(stream);
+		stream << "\tSpecials:\n\t\tAttack: " << special_attack_ << "\n\t\tDefense: " << special_defense_ << endl;
+	}
+
+private:
+	unsigned special_attack_;
+	unsigned special_defense_;
+};
+
+struct LegendaryPokemon : Pokemon
+{
+	LegendaryPokemon(const string& name, double const health, unsigned const attack, unsigned const defense, unsigned const speed, unsigned special_attack,
+		unsigned special_defense)
+		: Pokemon(name, health, attack, defense, speed),
+		special_attack_(special_attack),
+		special_defense_(special_defense)
+	{}
+
+	void set_special_attack(unsigned special_attack) { special_attack_ = special_attack; }
+	void set_special_defense(unsigned special_defense) { special_defense_ = special_defense; }
+
+	unsigned get_special_attack() const { return special_attack_; }
+	unsigned get_special_defense() const { return special_defense_; }
+
+	void print(ostream& stream) const override
+	{
+		stream << "Legendary ";
+		Pokemon::print(stream);
+		stream << "\tSpecials:\n\t\tAttack: " << special_attack_ << "\n\t\tDefense: " << special_defense_ << endl;
+	}
+
 private:
 	unsigned special_attack_;
 	unsigned special_defense_;
@@ -64,13 +119,16 @@ int main()
 {
 	auto p1 = Pokemon();
 	auto p2 = RarePokemon("Glaceon", 65.0, 60, 110, 65, 130, 95);
-	auto p3 = RarePokemon("Vaporeon", 130.0, 65, 60, 65, 110, 95);
+	auto p3 = EpicPokemon("Vaporeon", 130.0, 65, 60, 65, 110, 95);
+	auto p4 = LegendaryPokemon("Sylveon", 95.0, 65, 65, 60, 110, 130);
 
 	ofstream pokemons;
 	pokemons.open("pokemons.txt");
+	pokemons << "Pokemons:\n\n";
 	p1.print(pokemons);
 	p2.print(pokemons);
 	p3.print(pokemons);
+	p4.print(pokemons);
 	pokemons.close();
 	return 0;
 }
